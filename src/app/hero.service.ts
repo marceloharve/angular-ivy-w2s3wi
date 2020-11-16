@@ -10,15 +10,17 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class HeroService {
-  private heroesUrl = 'api/heroes';  // URL to web api
+  private heroesUrl = 'http://3079d5116c64.ngrok.io/';  // URL to web api'api/heroes'
 
   constructor(private messageService: MessageService, private http: HttpClient) { }
 
   /** GET heroes from the server */
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl).pipe(
-      catchError(this.handleError<Hero[]>('getHeroes', []))
-    );
+    return this.http.get<Hero[]>(this.heroesUrl);
+  }
+
+  getTxtHeroes(){
+    return '';//this.http.get(this.heroesUrl);
   }
 
 /**
@@ -34,7 +36,7 @@ private handleError<T>(operation = 'operation', result?: T) {
     console.error(error); // log to console instead
 
     // TODO: better job of transforming error for user consumption
-    this.log(`${operation} failed: ${error.message}`);
+    this.log(`${operation} failed: ${error.message }`);
 
     // Let the app keep running by returning an empty result.
     return of(result as T);

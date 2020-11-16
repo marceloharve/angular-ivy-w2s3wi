@@ -15,7 +15,7 @@ export class HeroesComponent implements OnInit {
     name: 'Windstorm'
   };
 
-
+  herotxt = '';
   heroes: Hero[];
   selectedHero: Hero;
   onSelect(hero: Hero): void {
@@ -32,6 +32,8 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit() {
     this.getHeroes();
+    this.herotxt = this.heroService.getTxtHeroes();
+    
   }
 
 }
