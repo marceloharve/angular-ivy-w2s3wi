@@ -10,7 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class HeroService {
-  private heroesUrl = 'http://3079d5116c64.ngrok.io/';  // URL to web api'api/heroes'
+  private heroesUrl = 'api/heroes';  // URL to web api'api/heroes'
 
   constructor(private messageService: MessageService, private http: HttpClient) { }
 
